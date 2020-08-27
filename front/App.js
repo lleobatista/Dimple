@@ -1,45 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, TextInput, Platform, StyleSheet, KeyboardAvoidingView, Dimensions  } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, Text, StyleSheet, KeyboardAvoidingView, Dimensions  } from 'react-native';
+import { Login } from './src/screens/Login';
 
-import HeaderLogin from './src/components/HeaderLogin';
-
-const { height, width } = Dimensions.get('window')
 export default function App() {
   return (
-    <View style={{flex:1, backgroundColor: '#00cc66'}}>
-    <HeaderLogin/>
-    <KeyboardAvoidingView
-      behavior="padding"
-      enabled={Platform.OS=== 'ios'}
-      style={styles.container}>
-      
-      <TextInput
-        placeholder="Digite seu login"
-        autoFocus={true}
-        autoCorrect={false}
-        style={styles.input}
-        selectionColor="white"
-        placeholderTextColor="white"
-        autoCapitalize="none"
-      />
-      <TextInput
-        placeholder="Senha"
-        autoCorrect={false}
-        style={styles.input}
-        selectionColor="white"
-        placeholderTextColor="white"
-        keyboardType="number-pad"
-        secureTextEntry={true}
-      />
-      <Button
-        title="Entrar"
-        titleStyle={{ color:'black', fontWeight: 'bold'}}
-        buttonStyle={{ backgroundColor: 'white', borderRadius: 50, height:45, marginVertical:25 }}
-      />
-      <StatusBar style="auto" />
-    </KeyboardAvoidingView >
+    <View>
+      <Text>Hello</Text>
     </View>
   );
 }
