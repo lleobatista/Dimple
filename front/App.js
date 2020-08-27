@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, Dimensions  } from 'react-native';
-import { Login } from './src/screens/Login';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function App() {
   return (
     <View>
-      <Text>Hello</Text>
+      <Text>Hello World</Text>
     </View>
   );
 }
