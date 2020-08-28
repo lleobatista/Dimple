@@ -1,30 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Login from './src/screens/Login';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator headerMode='none'>
+        <Stack.Screen name='Home' component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: '#00cc66',
-    paddingHorizontal: 30,
-    paddingVertical:45,
-    justifyContent:'center'
-  },
-  input:{
-    height: 45,
-    alignSelf: 'stretch',
-    backgroundColor: '#009933',
-    padding: 10,
-    borderRadius: 50,
-    marginTop: 10,
-    paddingHorizontal: 15,
-    color: 'white'
-  }
-});
