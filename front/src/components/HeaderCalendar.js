@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet,Image } from 'react-native';
-import test from '../../assets/icon.png'
+import test from '../../assets/icon.jpeg'
 
 const HeaderCalendar = (props) => (
   <View style={styles.conteiner}>
@@ -11,11 +11,10 @@ const HeaderCalendar = (props) => (
 
 const styles = StyleSheet.create({
   conteiner: {
-    backgroundColor: '#00cc66',
+    backgroundColor: '#3A64FF',
     alignItems: 'center',
-    justifyContent: 'center',
     flexDirection: 'row',
-    marginTop: 5
+    paddingHorizontal: 30
   },
   firstname: {
     fontWeight: 'bold',
@@ -23,13 +22,13 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   secondname: {
-    fontWeight: 'normal',
+    fontWeight: '300',
     fontSize: 25 
   },
   img: {
-    borderRadius: 90,
-    height: 45,
-    width: 45
+    borderRadius: 40,
+    height: 50,
+    width: 50
   }
 });
 
