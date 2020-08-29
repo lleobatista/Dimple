@@ -38,7 +38,7 @@ export default class Login extends Component {
           titleStyle={{ color:'black', fontWeight: 'bold'}}
           buttonStyle={{ backgroundColor: 'white', borderRadius: 50, height:45, marginVertical:25 }}
         />
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
       </KeyboardAvoidingView >
       </View>
     );
