@@ -1,20 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet,Image } from 'react-native';
+import { SafeAreaView, Text, StyleSheet,Image, View } from 'react-native';
 import test from '../../assets/icon.jpeg'
+import { Icon } from 'react-native-elements';
 
 const HeaderCalendar = (props) => (
-  <View style={styles.conteiner}>
+  <SafeAreaView style={styles.conteiner}>
     <Image source={test} style={styles.img}/>
     <Text style={styles.firstname}>  Leonardo <Text style={styles.secondname}>Batista </Text> </Text>
-  </View>
+    <Icon name="edit" color="white"/>
+  </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
   conteiner: {
     backgroundColor: '#3A64FF',
     alignItems: 'center',
-    flexDirection: 'row',
-    paddingHorizontal: 30
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
   firstname: {
     fontWeight: 'bold',
@@ -27,8 +29,8 @@ const styles = StyleSheet.create({
   },
   img: {
     borderRadius: 40,
-    height: 50,
-    width: 50
+    height: 35,
+    width: 35
   }
 });
 

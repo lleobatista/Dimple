@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View, FlatList, StyleSheet, Text, Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import HeaderCalendar from '../components/HeaderCalendar';
-import {Calendar, CalendarList, LocaleConfig} from 'react-native-calendars';
+import SafeBottom from '../components/SafeBottom';
+import {Calendar, LocaleConfig} from 'react-native-calendars';
+import { Icon } from 'react-native-elements'
 
-export default class Calendari extends Component {
+export default class Calendari extends Component {  
 
   render(){
 
@@ -19,9 +21,47 @@ export default class Calendari extends Component {
 
     LocaleConfig.defaultLocale = 'pt';
 
+    const DATA = [
+      {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        title: 'Quase',
+      },
+      {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        title: 'Second Item',
+      },
+      {
+        id: '58694a0f-3da1-471f-bd96-145571e29d72',
+        title: 'Third Item',
+      },
+      {
+        id: '58694a0f-3da1-471f-bd96-145571e29d7p',
+        title: 'Third Item',
+      },
+      {
+        id: '58694a0f-3da1-471f-bd96-145571e29d02',
+        title: 'Third Item',
+      },
+    ];
+  
+    const Item = ({ title }) => (
+      <View style={styles.item}>
+        <Icon
+        name="warning"
+        size={40}
+        color="#FF4A4A"
+        />
+        <Text style={styles.title}>  Todas <Text style={{fontWeight:'300'}}>reservadas</Text> 12:00 até 13:00</Text>
+      </View>
+    );
+  
+    const renderItem = ({ item }) => (
+      <Item title={item.title} />
+    );
+
     return(
-      <SafeAreaView style={{flex:1, backgroundColor: '#3A64FF', marginBottom:-100 }} >
-      <View style={{flex:1, backgroundColor:'#ECECEC', height:10000}}>
+      <View style={{flex:1, flexDirection:'column'}}>
+      
       
         <HeaderCalendar />     
         <Calendar
@@ -35,17 +75,10 @@ export default class Calendari extends Component {
         onPressArrowRight={addMonth => addMonth()}
         onDayPress={(day) => {console.log('selected day', day)}}
         
-        
-        
-
-        markedDates={{
-          'day.dateString': {selected: true, marked: true, disableTouchEvent: true}
-        }}
-
         style={{
-          height: 400,
-          borderBottomLeftRadius: 50,
-          borderBottomRightRadius: 50,
+          height:370,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -67,11 +100,11 @@ export default class Calendari extends Component {
           monthTextColor: 'white',
           indicatorColor: 'blue',
           textDayFontWeight: '300',
-          textMonthFontWeight: 'bold',
+          textMonthFontWeight: 'normal',
           textDayHeaderFontWeight: 'bold',
-          textDayHeaderFontSize: 14,
-          textDayFontSize: 27,
-          textMonthFontSize: 22,
+          textDayHeaderFontSize: 10,
+          textDayFontSize: 15,
+          textMonthFontSize: 25,
           'stylesheet.calendar.header': {
             arrowImage: {
               tintColor: 'white',
@@ -79,11 +112,48 @@ export default class Calendari extends Component {
           }
         }}
         />
-        
-        
-      </View>
+      
+        <FlatList
+        style={{marginTop: 10, flex: 1}}
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        />      
+       
+       <SafeBottom/>
       <StatusBar style="light" animated={false}/>
-      </SafeAreaView>
+      
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  item: {
+    
+    flexDirection:'row',
+    alignItems:'center',
+    marginTop: 2,
+    backgroundColor: 'white',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+	  width: 0,
+	  height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1,
+    elevation: 1,
+    height: 70
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
+});

@@ -8,7 +8,7 @@ const HeaderLogin = (props) => (
     centerComponent={{ text: 'Login', style: { color: 'white', fontWeight: 'bold', fontSize: 18 } }}
     rightComponent={{}}
     containerStyle={{
-      backgroundColor: '#00cc66',
+      backgroundColor: '#3A64FF',
       marginBottom:-.2
     }}
   />

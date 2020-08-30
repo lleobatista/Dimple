@@ -10,8 +10,9 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode='none'>
-        <Stack.Screen name='Calendar' component={Calendar} />
+      <Stack.Navigator headerMode='none'  >
+        <Stack.Screen name='Login' component={Login}  />
+        <Stack.Screen name='Calendar' component={Calendar} options={{ gestureEnabled: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

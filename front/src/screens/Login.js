@@ -7,8 +7,9 @@ import { Button } from 'react-native-elements';
 
 export default class Login extends Component {
   render() {
+    
     return (
-      <View style={{flex:1, backgroundColor: '#00cc66'}}>
+      <View style={{flex:1, backgroundColor: '#3A64FF'}}>
       <HeaderLogin/>
       <KeyboardAvoidingView
         behavior="padding"
@@ -37,6 +38,7 @@ export default class Login extends Component {
           title="Entrar"
           titleStyle={{ color:'black', fontWeight: 'bold'}}
           buttonStyle={{ backgroundColor: 'white', borderRadius: 50, height:45, marginVertical:25 }}
+          onPress={() => this.props.navigation.navigate('Calendar')}
         />
         <StatusBar style="light" />
       </KeyboardAvoidingView >
@@ -48,7 +50,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#00cc66',
+    backgroundColor: '#3A64FF',
     paddingHorizontal: 30,
     paddingVertical:45,
     justifyContent:'center'
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   input:{
     height: 45,
     alignSelf: 'stretch',
-    backgroundColor: '#009933',
+    backgroundColor: '#002BC9',
     padding: 10,
     borderRadius: 50,
     marginTop: 10,
