@@ -18,17 +18,17 @@ const Modal = ({ show, close }) => {
 
   const openModal = () => {
     Animated.sequence([
-      Animated.timing(state.container, { toValue: 0, duration: 100 }),
-      Animated.timing(state.opacity, { toValue: 1, duration: 300 }),
-      Animated.spring(state.modal, { toValue: 0, bounciness: 5, useNativeDriver: true })
+      Animated.timing(state.container, { toValue: 0, duration: 100, useNativeDriver: true }),
+      Animated.timing(state.opacity, { toValue: 1, duration: 300, useNativeDriver: true }),
+      Animated.spring(state.modal, { toValue: 0, bounciness: 5, useNativeDriver: true }),
     ]).start()
   }
 
   const closeModal = () => {
     Animated.sequence([
       Animated.timing(state.modal, { toValue: height, duration: 250, useNativeDriver: true }),
-      Animated.timing(state.opacity, { toValue: 0, duration: 300 }),
-      Animated.timing(state.container, { toValue: height, duration: 100 })
+      Animated.timing(state.opacity, { toValue: 0, duration: 300, useNativeDriver: true }),
+      Animated.timing(state.container, { toValue: height, duration: 100, useNativeDriver: true }),
     ]).start()
   }
 
@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    position: 'absolute'
+    position: 'absolute',
+    elevation: 2
   },
   modal: {
     bottom: 0,

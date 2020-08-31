@@ -13,7 +13,7 @@ export default class Login extends Component {
       <HeaderLogin/>
       <KeyboardAvoidingView
         behavior="padding"
-        enabled={Platform.OS=== 'ios'}
+        enabled={Platform.OS === 'ios'}
         style={styles.container}>
       
         <TextInput
@@ -36,11 +36,19 @@ export default class Login extends Component {
         />
         <Button
           title="Entrar"
-          titleStyle={{ color:'black', fontWeight: 'bold'}}
-          buttonStyle={{ backgroundColor: 'white', borderRadius: 50, height:45, marginVertical:25 }}
+          titleStyle={{ 
+            color:'black', 
+            fontWeight: 'bold'
+          }}
+
+          buttonStyle={{ 
+            backgroundColor: 'white', 
+            borderRadius: 50, height:45, 
+            marginVertical:25 
+          }}
           onPress={() => this.props.navigation.navigate('Calendar')}
         />
-        <StatusBar style="light" />
+        <StatusBar style="light"/>
       </KeyboardAvoidingView >
       </View>
     );

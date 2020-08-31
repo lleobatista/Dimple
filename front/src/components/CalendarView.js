@@ -35,8 +35,7 @@ const CalendarView = () => {
 	        height: 5,
         },
         shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-        elevation: 4,
+        shadowRadius: 2.62
       }}
       theme={{
         backgroundColor: '#3A64FF',

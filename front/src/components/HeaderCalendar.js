@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 
 const HeaderCalendar = (props) => {
  
-    return(
+  return(
   <SafeAreaView style={{backgroundColor: '#3A64FF'}}>
     <TouchableOpacity style={styles.conteiner}  onPress={() => props.navigation.navigate('Perfil')}>
     <Image source={test} style={styles.img}/>
@@ -13,8 +13,9 @@ const HeaderCalendar = (props) => {
     <Icon name="edit" color="white"/>
     </TouchableOpacity>
   </SafeAreaView>
-);
-    }
+  );
+}
+
 const styles = StyleSheet.create({
   conteiner: {
     backgroundColor: '#3A64FF',

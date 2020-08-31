@@ -39,11 +39,11 @@ const CalendarScreen = (props) => {
   const Item = ({ title }) => (
     <TouchableOpacity  style={styles.item} onPress={() => setModal(true)} >
       <Icon
-      name="warning"
-      size={40}
-      color="#FF4A4A"
+        name="warning"
+        size={40}
+        color="#FF4A4A"
       />
-      <Text style={styles.title}>  Todas <Text style={{fontWeight:'300'}}>reservadas</Text> 12:00 até 13:00</Text>
+      <Text style={styles.title}>Todas <Text style={{fontWeight:'300'}}>reservadas</Text> 12:00 até 13:00</Text>
     </TouchableOpacity >
   );
 
@@ -52,14 +52,17 @@ const CalendarScreen = (props) => {
   );
     
     return(
-      <View style={{flex:1, backgroundColor:'#ECECEC'}}>
+      <View style={{flex:1, backgroundColor:'#ECECEC', elevation:-2}}>
         
         <HeaderCalendar navigation={props.navigation} />
         
         <CalendarView />
 
         <FlatList
-          style={{marginTop: 10, flex: 1}}
+          style={{
+            marginTop: 10, 
+            flex: 1
+          }}
           data={DATA}
           renderItem={renderItem}
           keyExtractor={item => item.id}
@@ -93,7 +96,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 1,
-    elevation: 1,
     height: 70
   },
   title: {
