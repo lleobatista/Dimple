@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions, Button } from 'react-native'
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const { height } = Dimensions.get('window')
 
 const Modal = ({ show, close }) => {
+
+  const [selectedValue, setSelectedValue] = useState({
+    room: ''
+  });
+
   const [state, setState] = useState({
     opacity: new Animated.Value(0),
     container: new Animated.Value(height),
@@ -34,6 +40,11 @@ const Modal = ({ show, close }) => {
     }
   }, [show])
 
+  const Separator = () => (
+    <View style={styles.separator} />
+  );
+  
+
   return( 
     <Animated.View 
       style={[styles.container, {
@@ -50,15 +61,46 @@ const Modal = ({ show, close }) => {
           ]
         }]}
       >
+        
         <View style={styles.indicator} />
+        <Text style={{fontSize:18,marginTop:30, fontWeight:'bold', alignSelf:'center'}}>Agendamento</Text>
+        <DropDownPicker
 
-        <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae massa odio. Quisque ante sem, tempor eget massa vel, mollis tincidunt metus. Ut sed felis lectus. Nam semper molestie urna, quis ultricies quam semper ut. Maecenas aliquet id urna a convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas leo lectus, dictum vitae erat eget, luctus dapibus sapien. Integer at hendrerit quam. Vivamus tempor, arcu non fringilla laoreet, enim nibh porttitor enim, eget pellentesque eros nulla congue neque. Suspendisse et lobortis enim, nec fermentum est. Aliquam accumsan viverra vehicula. Proin tempus sagittis auctor. Vivamus quam ligula, laoreet eget eros et, hendrerit iaculis risus. Nam a nulla in purus fermentum rhoncus eu et erat. Aliquam tempus felis lorem, id hendrerit tortor vestibulum ac.
-        </Text>
-
+          placeholder="Seleciona o número da sala que deseja agendar"
+          items={[
+            {label: 'Sala A34', value: 'a34'},
+            {label: 'Sala B15', value: 'b15'},
+            {label: 'Sala G05', value: 'g05'}  
+          ]}
+          containerStyle={{height: 50, width:'100%', marginTop:20}}
+          style={{backgroundColor: '#fafafa'}}
+          itemStyle={{
+            justifyContent: 'flex-start',
+            fontSize:'20'
+          }}
+          dropDownStyle={{backgroundColor: '#fafafa'}}
+          onChangeItem={item => setSelectedValue({
+            country: item.value
+          })}
+        />
+        
+        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+          <Text style={{fontSize:20,fontWeight:'400',marginTop:20}}>Dia: </Text>
+          <Text style={{fontSize:20,fontWeight:'bold',marginTop:20 }}>12/08/2020</Text>
+         </View>
+        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+          <Text style={{fontSize:20,fontWeight:'400',marginTop:20}}>Horário: </Text>
+          <Text style={{fontSize:20,fontWeight:'bold', marginTop:20}}>13:00 até 14:00</Text>
+        </View>
+          
+        
         <TouchableOpacity style={styles.btn} onPress={close}>
-          <Text style={{ color: '#fff' }}>Close</Text>
+          <Text style={{ color: '#fff', fontSize:25, fontWeight:'300' }}>CONFIRMAR</Text>
         </TouchableOpacity>
+          <TouchableOpacity style={styles.btn2} onPress={close}>
+          <Text style={{ color: '#fff', fontSize:25, fontWeight:'300' }}>CANCELAR</Text>
+        </TouchableOpacity>
+       
       </Animated.View>
     </Animated.View>
   )
@@ -80,7 +122,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingLeft: 25,
-    paddingRight: 25
+    paddingRight: 25,
+
   },
   indicator: {
     width: 50,
@@ -98,10 +141,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     borderRadius: 10,
-    backgroundColor: '#9b59b6',
+    backgroundColor: '#17BC04',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30
+  },
+  btn2: {
+    width: '100%',
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   }
 })
 
