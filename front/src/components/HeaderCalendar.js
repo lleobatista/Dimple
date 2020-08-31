@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { SafeAreaView, Text, StyleSheet,Image, TouchableOpacity } from 'react-native';
+import React from 'react'
+import { SafeAreaView, Text, StyleSheet,Image, TouchableOpacity, Platform, StatusBar } from 'react-native'
 import test from '../../assets/icon.jpeg'
-import { Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements'
+
 
 const HeaderCalendar = (props) => {
- 
+
   return(
-  <SafeAreaView style={{backgroundColor: '#3A64FF'}}>
+  <SafeAreaView style={{backgroundColor: '#3A64FF',paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }}>
     <TouchableOpacity style={styles.conteiner}  onPress={() => props.navigation.navigate('Perfil')}>
     <Image source={test} style={styles.img}/>
     <Text style={styles.firstname}>  Leonardo <Text style={styles.secondname}>Batista </Text> </Text>

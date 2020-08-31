@@ -52,7 +52,7 @@ const CalendarScreen = (props) => {
   );
     
     return(
-      <View style={{flex:1, backgroundColor:'#ECECEC', elevation:-2}}>
+      <View style={{flex:1, backgroundColor:'#ECECEC'}}>
         
         <HeaderCalendar navigation={props.navigation} />
         

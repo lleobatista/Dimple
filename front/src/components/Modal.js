@@ -94,13 +94,15 @@ const Modal = ({ show, close }) => {
           <Text style={{fontSize:20,fontWeight:'bold', marginTop:20}}>13:00 até 14:00</Text>
         </View>
           
-        
-        <TouchableOpacity style={styles.btn} onPress={close}>
-          <Text style={{ color: '#fff', fontSize:25, fontWeight:'300' }}>CONFIRMAR</Text>
-        </TouchableOpacity>
+        <View style={{flexDirection:'row',justifyContent:'center', marginTop:10}}>
           <TouchableOpacity style={styles.btn2} onPress={close}>
           <Text style={{ color: '#fff', fontSize:25, fontWeight:'300' }}>CANCELAR</Text>
         </TouchableOpacity>
+        <Text>  </Text>
+        <TouchableOpacity style={styles.btn} onPress={close}>
+          <Text style={{ color: '#fff', fontSize:25, fontWeight:'300' }}>CONFIRMAR</Text>
+        </TouchableOpacity>
+        </View>
        
       </Animated.View>
     </Animated.View>
@@ -112,8 +114,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    position: 'absolute',
-    elevation: 2
+    position: 'absolute'
   },
   modal: {
     bottom: 0,
@@ -124,8 +125,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingLeft: 25,
-    paddingRight: 25,
-
+    paddingRight: 25
   },
   indicator: {
     width: 50,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   btn: {
-    width: '100%',
+    width: '49%',
     height: 50,
     borderRadius: 10,
     backgroundColor: '#17BC04',
@@ -149,13 +149,13 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   btn2: {
-    width: '100%',
+    width: '49%',
     height: 50,
     borderRadius: 10,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10
+    marginTop: 30
   },
   separator: {
     marginVertical: 8,

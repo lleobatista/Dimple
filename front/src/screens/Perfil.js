@@ -1,13 +1,58 @@
 import React, { Component } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Header } from 'react-native-elements'
-import test from '../../assets/icon.jpeg'
 import { Icon } from 'react-native-elements'
+import axios from 'axios'
 
 import SafeBottom from '../components/SafeBottom'
 
 export default class Perfil extends Component {
+   
+  constructor(props) {
+    super(props);
+    this.state = {
+      people: [],
+      loading: false,
+      error: false,
+    };
+  }
+
+  componentDidMount(){
+    this.setState({ loading:true });
+
+    axios.get('https://randomuser.me/api/?nat=us&results=1').then(response => {
+      const {results} = response.data;
+      this.setState ({
+        people: results,
+        loading: false
+      })
+    }).catch(error => {
+      this.setState({
+        error: true,
+        loading: false
+      })
+    })
+  }
+
+  renderPerson(){
+
+    const textElements = this.state.people.map(person => {
+      const {first} = person.name;
+      const {last} = person.name;
+      const {large} = person.picture;
+
+      return  (
+        <View style={styles.imageView}>
+          <Image source={{uri:large}} style={styles.img}/>
+          <Text key={first} style={styles.textName}>{first} <Text key={last} style={styles.textLastName}>{last}</Text></Text>
+        </View>
+      );
+    });
+
+    return textElements;
+  }
+  
   render(){
 
     const Separator = () => (
@@ -16,6 +61,7 @@ export default class Perfil extends Component {
 
     return(
       <View style={styles.container}>
+      
         <Header
           placement="center"
           leftComponent={{
@@ -39,8 +85,16 @@ export default class Perfil extends Component {
       />
 
       <View style={styles.imageView}>
-      <Image source={test} style={styles.img}/>
-      <Text style={styles.textName}>Leonardo <Text style={styles.textLastName}>Silva</Text></Text>
+      {
+          this.state.loading ? 
+          <ActivityIndicator size="large" color="black"/>
+          :
+            this.state.error ? 
+            <Text>Error ao carregar informações do perfil</Text> 
+            : 
+              this.renderPerson()
+      }        
+      
       </View>
 
       <Text style={styles.titleText}>PERFIL</Text>
@@ -95,7 +149,6 @@ export default class Perfil extends Component {
       <Separator/>
       
       <SafeBottom />
-  
      
       </View>
       
