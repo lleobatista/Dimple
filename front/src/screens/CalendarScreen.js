@@ -9,7 +9,7 @@ import Modal from '../components/Modal'
 import CalendarView from '../components/CalendarView'
 
 
-const CalendarScreen = () => {  
+const CalendarScreen = (props) => {  
 
   const [modal, setModal] = useState(false)
 
@@ -52,9 +52,9 @@ const CalendarScreen = () => {
   );
     
     return(
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor:'#ECECEC'}}>
         
-        <HeaderCalendar /> 
+        <HeaderCalendar navigation={props.navigation} />
         
         <CalendarView />
 
@@ -70,7 +70,7 @@ const CalendarScreen = () => {
           close={() => setModal(false)}
         />
         <SafeBottom/>
-      <StatusBar style="light" animated={false}/>
+      <StatusBar style="light"/>
       </View>
     )
   }

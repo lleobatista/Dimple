@@ -65,18 +65,19 @@ const Modal = ({ show, close }) => {
         <View style={styles.indicator} />
         <Text style={{fontSize:18,marginTop:30, fontWeight:'bold', alignSelf:'center'}}>Agendamento</Text>
         <DropDownPicker
-
           placeholder="Seleciona o número da sala que deseja agendar"
           items={[
             {label: 'Sala A34', value: 'a34'},
             {label: 'Sala B15', value: 'b15'},
-            {label: 'Sala G05', value: 'g05'}  
+            {label: 'Sala G05', value: 'g05'},
+            {label: 'Sala P10', value: 'p10'},
+            {label: 'Sala T50', value: 't50'}  
           ]}
-          containerStyle={{height: 50, width:'100%', marginTop:20}}
           style={{backgroundColor: '#fafafa'}}
+          containerStyle={{height: 50, width:'100%', marginTop:20}}
+          
           itemStyle={{
-            justifyContent: 'flex-start',
-            fontSize:'20'
+            justifyContent: 'flex-start'
           }}
           dropDownStyle={{backgroundColor: '#fafafa'}}
           onChangeItem={item => setSelectedValue({
