@@ -19,6 +19,28 @@ export default class Perfil extends Component {
   }
 
   componentDidMount(){
+    var firebaseConfig = {
+      apiKey: "AIzaSyAcRb2KuMYnNxhri7_CVApG4YN2my7uhWc",
+      authDomain: "dimple-b8670.firebaseapp.com",
+      databaseURL: "https://dimple-b8670.firebaseio.com",
+      projectId: "dimple-b8670",
+      storageBucket: "dimple-b8670.appspot.com",
+      messagingSenderId: "4094177131",
+      appId: "1:4094177131:web:ada50fa0d3b125c8e3262e",
+      measurementId: "G-14FQTR2WM5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword('jordimartinali@thenetherlands.com', '123456')
+      .then(user => {console.log('OK', user)})
+      .catch(error => {console.log('ERRO', error)})
+    }
+
+  componentDidMount(){
     this.setState({ loading:true });
 
     axios.get('https://randomuser.me/api/?nat=us&results=1').then(response => {
